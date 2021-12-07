@@ -1,0 +1,24 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Launch Js Debug Example",
+            "type": "pwa-chrome",
+            "request": "launch",
+            // "url": "http://localhost:3000/",
+            "webRoot": "${workspaceFolder}",
+            "file": "${workspaceFolder}/index.html",
+            // "pathMapping": {
+            //     "src": "${workspaceFolder}/src",
+            //     "js/vanilla-script.js": "${workspaceFolder}/public/js/vanilla-script.js",
+            //     "js/jq-script.js": "${workspaceFolder}/public/js/jq-script.js"
+            // },
+            "skipFiles": [
+                "node_modules/*",
+                "react-dom*.js",
+                "jquery-3.3.1.min.js"
+            ],
+            "disableNetworkCache": true
+        }
+    ]
+}
