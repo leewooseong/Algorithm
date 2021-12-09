@@ -7,7 +7,7 @@
 const inputs = prompt("두 수를 입력해주세요.").split(" ");
 
 function shareNRemains(dividend, divisor) {
-  return `${dividend / divisor} ${dividend % divisor}`;
+  return `${Math.floor(dividend / divisor)} ${dividend % divisor}`;
 }
 
 // console.log(shareNRemains(10, 2));
