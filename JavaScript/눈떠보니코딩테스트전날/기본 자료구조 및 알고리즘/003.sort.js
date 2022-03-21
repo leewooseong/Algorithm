@@ -4,7 +4,7 @@
 // - 시간복잡도: O(n**2)
 // - 입력 배열에서 제일 작은 것을 선택 -> 결과 배열(반환 배열)에 차례로 정렬
 
-// ※ 선택 정렬의 진행 과정
+// ※ 선택정렬의 진행과정
 //   step1.
 //   let 전 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 //   let 후 = [];
@@ -66,7 +66,7 @@ console.log(selectionSort(arr));
 // - 시간복잡도: O(n**2)
 // - 입력 배열의 원소를 차례대로 결과 배열에 삽입 -> 결과 배열(반환 배열)에 들어갈 때 자기가 들어갈 (정렬된) 위치에 삽입하는 것!
 
-// ※ 삽입 정렬의 진행과정
+// ※ 삽입정렬의 진행과정
 // let 전 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 // let 후 = [];
 
@@ -127,8 +127,6 @@ for (let i = 0; i < beforeInsertLength; i++) {
 //     console.log(`인덱스 : ${인덱스}\n삽입값 : ${삽입값}\n 정렬된배열 : ${정렬된배열}\n`)
 // }
 
-//
-
 // - 코드 2: 교안 풀이(좀 더 어렵게)
 function insertIndex(sorted_arr, value) {
   //삽입될 위치를 찾는 함수
@@ -156,18 +154,21 @@ const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 console.log(insertSort(arr));
 
 // 3.3 병합정렬(Merge Sort)
-// Worst와 Best 모두 O(nlogn), 어떤 정렬보다 빠름, 통일 할 수 있음
+// - 시간복잡도: Worst와 Best 모두 O(nlogn)
+// - 어떤 정렬보다 빠름, 통일 할 수 있음
 
-// 분할(이해를 돕기 위해 8개로 조정)
+// ※ 병합정렬의 진행과정
+// - 분할(이해를 돕기 위해 8개로 조정)
 // [5, 10, 66, 77], [54, 32, 11, 15]
 // [5, 10], [66, 77], [54, 32], [11, 15]
 // [5], [10], [66], [77], [54], [32], [11], [15]
 
-//정복(0번째끼리 비교!)
+// - 정복(0번째끼리 비교!_이미 다 정렬된 배열이기 때문!)
 // [5, 10], [66, 77], [32, 54], [11, 15]
 // [5, 10, 66, 77], [11, 15, 32, 54]
 // [5, 10, 11, 15, 32, 54, 66, 77]
 
+// 코드 1.
 let beforeMergeArr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 let afterMergeArr = [];
 
@@ -207,19 +208,23 @@ function mergeSort(unsortedArr) {
 
 console.log(Mer);
 
-// 고급
+// 코드2: 고급스러운 방법
+
+// 분할 및 재귀 함수
 function mergeSort(arr) {
+  // 재귀함수 반환 조건
   if (arr.length <= 1) {
     return arr;
   }
 
-  const mid = Math.floor(arr.length / 2);
-  const left = arr.slice(0, mid);
-  const right = arr.slice(mid);
+  const mid = Math.floor(arr.length / 2); // 중간점 찾기
+  const left = arr.slice(0, mid); // 왼쪽 그룹
+  const right = arr.slice(mid); // 오른쪽 그룹
 
   return merge(mergeSort(left), mergeSort(right));
 }
 
+// 병합 함수
 function merge(left, right) {
   let result = [];
 
@@ -246,8 +251,30 @@ const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 console.log(mergeSort(arr));
 
 // 3.4 퀵 정렬(Quick Sort)
+// -
+// - 피봇값(pivot)을 기준으로 정렬
+// - 피봇값은 처음값, 중간값, 마지막 값 -> 피봇 값에 따라 성능이 달라진다는 얘기가 있다.
+// - 실무에서는 worst일 경우를 피하기 위해 피봇을 랜덤하게 주는 경우나, 피봇을 2개 사용하는 경우도 있음.
 
-// 코드 1.
+// ※ 퀵정렬의 진행과정
+// let 입력값 = [66, 77, 54, 32, 10, 5, 11, 15];
+
+// // step 1: 피봇값 : 66
+// [54, 32, 10, 5, 11, 15] + [66] + [77]
+
+// // step 2: 피봇값 : 54(66과 77은 값이 한 개이기 때문에 더이상 재귀로 호출되지 않음.)
+// [32, 10, 5, 11, 15], [54] + [66] + [77]
+
+// // step 3: 피봇값 : 32
+// [10, 5, 11, 15], [32] + [54] + [66] + [77]
+
+// // step 4: 피봇값 : 10
+// [5] + [10], [11, 15] + [32] + [54] + [66] + [77]
+
+// // step 5: 피봇값 : 11
+// [5] + [10] + [11] + [15] + [32] + [54] + [66] + [77]
+
+// - 코드 1.
 let beforeQuickArr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 function QuickSort(unsortedArr) {
   let unsortedLength = unsortedArr.length;
@@ -274,3 +301,26 @@ function QuickSort(unsortedArr) {
 
   return QuickSort(leftFromPivot).concat(pivot, QuickSort(rightFromPivot));
 }
+
+// - 코드 2: 참고용 Notion 코드
+function quickSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  const pivot = arr[0]; //기준점
+  const left = [];
+  const right = [];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return quickSort(left).concat(pivot, quickSort(right));
+}
+
+const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+console.log(quickSort(arr));

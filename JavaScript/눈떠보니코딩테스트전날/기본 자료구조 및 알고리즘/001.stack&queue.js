@@ -73,3 +73,8 @@ console.log(s);
 console.log(s.empty());
 console.log(s.top());
 console.log(s.bottom());
+
+
+class Queue {
+  
+}
