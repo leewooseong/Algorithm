@@ -8,15 +8,15 @@ function buyCandy(input) {
 
     let count = 3;
     let score;
-    sortedInput.forEach((value, index) => {
+    for (let i = 0; i < sortedInput.length; i++) {
         if (count === 0) {
-            console.log(index);
-            return;
-        } else if (score !== value) {
-            score = value;
+            console.log(i);
+            break;
+        } else if (score !== sortedInput[i]) {
+            score = sortedInput[i];
             count -= 1;
         }
-    });
+    }
 }
 
 buyCandy(input);
