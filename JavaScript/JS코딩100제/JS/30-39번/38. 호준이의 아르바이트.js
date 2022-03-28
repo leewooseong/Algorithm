@@ -4,7 +4,6 @@ function buyCandy(input) {
     const sortedInput = input.sort(function (a, b) {
         return b - a;
     });
-    // console.log(sortedInput);
 
     let count = 3;
     let score;
