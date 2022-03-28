@@ -1,13 +1,22 @@
-// **문장이 입력되면 모든 q를 e로 바꾸는 프로그램을 작성해 주세요.**
-
 const input = prompt("입력");
 const hello = "hello";
 
 function convertQToE(input) {
+    // 1. 내 풀이
     const result = Array.from(input).map((value) => {
         return value == "q" ? "e" : value;
     });
     console.log(result.join(""));
+
+    // 2. 함수 사용
+    function replaceAll(str, searchStr, replaceStr) {
+        return str.split(searchStr).join(replaceStr);
+    }
+
+    console.log(replaceAll(input, "q", "e"));
+
+    // 3. 정규식 사용
+    console.log(word.replace(/q/gi, "e"));
 }
 
 convertQToE(input);
