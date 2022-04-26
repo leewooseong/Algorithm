@@ -1,3 +1,5 @@
+// input : aAbBcCdDeE
+
 const input = prompt("입력");
 
 function changeCase(input) {
