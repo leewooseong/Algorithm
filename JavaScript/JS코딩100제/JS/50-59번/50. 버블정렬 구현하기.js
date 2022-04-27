@@ -3,12 +3,10 @@
 // 입력 : 4 2 3 8 5
 
 function bubble(arr) {
-    let result = arr.slice();
+    let result = arr.slice(); // 원본 배열을 복사하여 사용
 
     for (let i = 0; i < result.length - 1; i++) {
-        // console.log(i);
-        for (let j = result.length - i - 1; j >= 0; j--) {
-            console.log(j);
+        for (let j = 0; j >= result.length - i; j++) {
             if (result[j] > result[j + 1]) {
                 let temp = result[j + 1];
                 result[j + 1] = result[j];
