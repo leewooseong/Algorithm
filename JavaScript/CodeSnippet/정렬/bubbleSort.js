@@ -4,7 +4,8 @@
 //   - input insensitive : 기본적으로 모두 비교 -> O(n^2)
 //   - input sensitive : if 문을 넣음으로써 정렬된 배열에 대해서 O(1)까지 줄수 있다.
 
-// 입력 : 4 2 3 8 5
+// 입력 : Number Array
+// 출력 : Sorted Number Array
 function bubble(arr) {
     let result = arr.slice(); // 원본 배열을 복사하여 사용
 
@@ -19,11 +20,3 @@ function bubble(arr) {
     }
     return result;
 }
-
-const items = prompt("입력해주세요.")
-    .split(" ")
-    .map((n) => {
-        return parseInt(n, 10);
-    });
-
-console.log(bubble(items));
